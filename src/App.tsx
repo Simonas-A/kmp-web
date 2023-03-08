@@ -6,25 +6,29 @@ import { json } from 'stream/consumers';
 
 function App() {
   //const [text, setText] = useState('data');
-  const [forecast, setForecast] = useState<any>(null);
+  //const [forecast, setForecast] = useState<any>(null);
 
   const buttonClick = async () => {
-    const text = await SampleClient.getDataAsync();
+    //const text = await SampleClient.getDataAsync();
     //console.log("app" + text);
+    console.log("TESTING DIS SHIT IF IT WORKS");
     //const weather = JSON.parse(text);
-    setForecast(text);
+    //setForecast(text);
     //setText(text);
   }
 
-  return (
+  //https://www.youtube.com/watch?v=A9oUTEP-Q84&ab_channel=PedroTech
+
+  return <div className="App">
+    <header className="App-header">
+      <button onClick={buttonClick}>Test</button>
+    </header>
+    
+  </div>;/*(
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <button onClick={buttonClick}>Get data</button>
-        <p>{forecast}</p>
-        {
-          //forecast.map((m: { temperatureC: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; }) => {<h1>{m.temperatureC}</h1>})
-        }
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
@@ -38,7 +42,8 @@ function App() {
         </a>
       </header>
     </div>
-  );
+    
+  )*/
 }
 
 export default App;
