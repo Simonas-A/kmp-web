@@ -2,7 +2,7 @@ import axios from 'axios';
 import  {Car}  from '../Car';
 import { CarListing } from '../CarListing';
 import { Listing } from '../Listing';
-
+//tvarkysiu dar sita koda, kol kas uzklausas per url siunciu
 const BASE_URL = 'https://localhost:7207';
 
 const api = axios.create({
@@ -17,13 +17,11 @@ export const getCars = async (): Promise<Car[]> => {
   return response.data;
 }
 
-// GET /Car/GetCar/{id}
 export async function getCar(id: string): Promise<Car> {
   const response = await api.get<Car>('/Car/GetCar/'+id);
   return response.data;
 }
 
-// POST /Car/AddCar
 export async function addCar(car: Car): Promise<string> {
   const response = await api.post<string>('/Car/AddCar?year='+car.year +'&mileage='+car.mileage+'&brand='+car.brand+'&model='+car.model);
   return response.data;
