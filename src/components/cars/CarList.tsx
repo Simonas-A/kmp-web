@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import logo from './logo.svg';
-import './App.css';
-import SampleClient from './clients/sampleClient';
+import '../../App.css';
+import SampleClient from '../../clients/sampleClient';
 import { json } from 'stream/consumers';
 import { useTable, UseTableRowProps } from "react-table";
-import data from "./MOCK_DATA.json";
+import data from "../../MOCK_DATA.json";
 import {createRoot} from 'react-dom/client';
-import './index.css';
-import Car from './Car'
+import '../../index.css';
+import Car from './Car';
 
 //setup vars
 
@@ -37,12 +37,14 @@ function CarList() {
         )})
         
       }
+      <button type="button" onClick={clickHandler}>Add</button>
     </section>
+    
   );
 }
 
-const domNode = document.getElementById('root')
-const root = createRoot(domNode!);
-root.render( <CarList />);
+// const domNode = document.getElementById('root')
+// const root = createRoot(domNode!);
+// root.render( <CarList />);
 
 export default CarList;
