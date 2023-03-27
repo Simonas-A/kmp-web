@@ -11,8 +11,10 @@ import Car from './Car';
 
 //setup vars
 
-function CarList() {
+function CarList(newCar: any) {
   const [list, setList] = useState(data);
+  
+  
 
   const clickHandler = () => {
     alert('nothing happened');
@@ -35,11 +37,8 @@ function CarList() {
             <button type="button" onClick={clickHandler}>Edit</button>
           </div>
         )})
-        
       }
-      <button type="button" onClick={clickHandler}>Add</button>
     </section>
-    
   );
 }
 
