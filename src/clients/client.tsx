@@ -51,5 +51,17 @@ export async function addListing(listing: Listing): Promise<string> {
   const response = await api.post<string>('/Listing/addListing?price='+listing.price+'&carId='+listing.carId);
   return response.data;
 }
+const client = {
+  getCars,
+  getCar,
+  addCar,
+  getCarListings,
+  getCarListingById,
+  getListings,
+  getListingById,
+  addListing,
+};
+
+export default client;
 
 
