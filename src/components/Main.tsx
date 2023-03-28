@@ -48,7 +48,7 @@ const Main = () => {
                 } />
                 <Route index path={ROUTES.ADD_LISTING} element={
                     <TabPanel value={value} index={1}>
-                        <AddListing listing={setAddedListing}/>
+                        <AddListing />
                     </TabPanel>
                 } />
             </Routes>

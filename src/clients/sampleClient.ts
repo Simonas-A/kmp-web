@@ -1,3 +1,4 @@
+import Listing from "../components/models/listing";
 
 export default class SampleClient {
 
@@ -8,6 +9,24 @@ export default class SampleClient {
         });
         const text = await response.text();
         return text;
+    }
+
+    public static async getCarListings(): Promise<Listing[]> {
+        const url = "https://localhost:7207/Car/GetCars";
+        const response = await fetch(url, {
+            method: "GET"
+        });
+        const text = await response.text();
+        return JSON.parse(text);
+    }
+
+    public static async addCar(listing: Listing): Promise<void> {
+        const url = "https://localhost:7207/Car";
+        const response = await fetch(url, {
+            method: "POST",
+            body: JSON.stringify(listing)
+        });
+        const text = await response.text();
     }
 
     public static getData(): string {
