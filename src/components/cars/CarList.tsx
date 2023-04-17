@@ -13,16 +13,17 @@ import Listing from '../models/listing';
 //setup vars
 let listings: Listing[];
 
-async function getCars (){
+async function getCars (setList: any){
   listings = await SampleClient.getCarListings();
+  setList(listings);
 }
 
 function CarList() {
-  getCars();
-  
-  const [list, setList] = useState(listings);
   
   
+  const [list, setList] = useState([]); 
+  
+  getCars(setList);
   //setList(listings);
 
   const clickHandler = () => {
@@ -37,8 +38,9 @@ function CarList() {
   return (
     <section className='carList'>
       {
+        
         list.map((car, index) => {
-          console.log(car);
+          // console.log(car);
           // const {img, price, year, seller} = car;
           return (
           <div>
