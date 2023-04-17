@@ -22,7 +22,7 @@ function a11yProps(index: number) {
 
 const Main = () => {
     const [value, setValue] = React.useState(0);
-    const [addedListing, setAddedListing] = useState([]);
+    // const [addedListing, setAddedListing] = useState([]);
     
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -42,8 +42,8 @@ const Main = () => {
             <Routes>
                 <Route index path={ROUTES.HOME} element={
                     <TabPanel value={value} index={0}>
-                        <h1>{addedListing}</h1>
-                        <CarList newCar={addedListing}/>
+                        {/* <h1>{addedListing}</h1> */}
+                        <CarList />
                     </TabPanel>
                 } />
                 <Route index path={ROUTES.ADD_LISTING} element={

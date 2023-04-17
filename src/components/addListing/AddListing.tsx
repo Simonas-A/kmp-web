@@ -19,21 +19,8 @@ const AddListing = () => {
   const [imageFiles, setImageFiles] = useState([]);
 
   const clickHandler = async (e: any) => {
-      // e.preventDefault();
-      // if (img && car && price && year && phone && seller) {
-      //   const aCar = {img:img, car:car, price:price, year:year, phone:phone, seller:seller};
-      //   console.log(aCar);
-      //   setArr((arr) => {
-      //     return [...arr, aCar]
-      //   });
-      // } else {
-      //   console.log('empty values')
-      // }
-      //setArr([...arr, {img, car, price, year, phone, seller}]);
-      //listing = arr;
-      const listing = new Listing(car, seller, price);
+      const listing = new Listing(2002, 5000, 'BMW', 'A6');
       await SampleClient.addCar(listing);
-      // console.log(arr);
   } 
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -85,7 +72,6 @@ const AddListing = () => {
           <NavLink to='/' style={{textDecoration: 'none', paddingLeft:45}}>
             <Button variant="contained" onClick={clickHandler}>Add listing</Button>
           </NavLink>
-          {/* <h1>{arr}</h1> */}
       </Box>
     </>
   )

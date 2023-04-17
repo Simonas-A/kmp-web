@@ -8,33 +8,44 @@ import data from "../../MOCK_DATA.json";
 import {createRoot} from 'react-dom/client';
 import '../../index.css';
 import Car from './Car';
+import Listing from '../models/listing';
 
 //setup vars
+let listings: Listing[];
 
-function CarList(newCar: any) {
-  const [list, setList] = useState(data);
+async function getCars (){
+  listings = await SampleClient.getCarListings();
+}
+
+function CarList() {
+  getCars();
+  
+  const [list, setList] = useState(listings);
   
   
+  //setList(listings);
 
   const clickHandler = () => {
     alert('nothing happened');
   }
 
-  function removeList (id : any) {
-    const newList = list.filter((l) => l.id !== id);
-    setList(newList);
-  }
+  // function removeList (id : any) {
+  //   const newList = list.filter((l) => l.id !== id);
+  //   setList(newList);
+  // }
 
   return (
     <section className='carList'>
       {
         list.map((car, index) => {
-          const {img, price, year, seller} = car;
+          console.log(car);
+          // const {img, price, year, seller} = car;
           return (
           <div>
-            <Car key={index} car={car}></Car>
-            <button type="button" onClick={()=>removeList(car.id)}>Delete</button>{/*car.id naudoju kai deletinu, gali prireikt index gaaaal veliau */}
+            <Car key={index} car={car} index={index}></Car>
+            {/* <button type="button" onClick={()=>removeList(car.id)}>Delete</button> */}
             <button type="button" onClick={clickHandler}>Edit</button>
+            
           </div>
         )})
       }

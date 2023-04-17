@@ -20,11 +20,20 @@ export default class SampleClient {
         return JSON.parse(text);
     }
 
+    public static async editCar(): Promise<Listing[]> {
+        const url = "https://localhost:7207/Car/EditCars";
+        const response = await fetch(url, {
+            method: "POST"
+        });
+        const text = await response.text();
+        return JSON.parse(text);
+    }
+
     public static async addCar(listing: Listing): Promise<void> {
-        const url = "https://localhost:7207/Car";
+        const url = "https://localhost:7207/Car/AddCar?year=" + listing.year + "&mileage=" + listing.mileage + "&brand=" + listing.brand + "&model=" + listing.model;
         const response = await fetch(url, {
             method: "POST",
-            body: JSON.stringify(listing)
+            // body: JSON.stringify(listing)
         });
         const text = await response.text();
     }
