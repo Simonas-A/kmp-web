@@ -1,0 +1,10 @@
+.navbar-nav{
+    margin-left: auto;
+    padding-right: 1rem;;
+}
+.navbar-brand{
+    padding-left: 1rem;;
+}
+.nav-link:hover{
+    color:white;
+}
