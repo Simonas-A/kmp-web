@@ -17,7 +17,7 @@ const Navbar = () => {
             <Link to="/add-listing" className="nav-link">Įdėti skelbimą</Link>
           </li>
           <li className="nav-item">
-            <Link to="/" className="nav-link">Visi skelbimai</Link>
+            <Link to="/car-list" className="nav-link">Visi skelbimai</Link>
           </li>
           <li className="nav-item">
             <Link to="/about" className="nav-link">Apie mus</Link>
