@@ -1,0 +1,19 @@
+.d-block{
+    margin-top: 0;
+    margin-left: 0;
+    height: 43rem;
+    width: auto;
+}
+.carousel-caption {
+    padding: 15px;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+.filter{
+    padding: 300px 0;
+    text-align: center;
+}
+.background{
+    background-color: rgba(0, 0, 0, 0.4);
+}
