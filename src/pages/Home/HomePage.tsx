@@ -49,7 +49,7 @@ const HomePage = () => {
         <h1> Cia bus automobilius filtravimas/paieska</h1>
     </div>
     <div className="text-center p-3 background">
-    © 2022 Copyright: KTU
+    © 2023 Copyright: KTU
     </div>
     </div>
     

@@ -9,17 +9,18 @@ import FileUpload from '../imageUpload/FileUpload';
 import SelectThumbnail from '../imageUpload/SelectThumbnail';
 
 const AddListing = () => {
-  const [arr, setArr] = useState([]);
-  const [img, setImg] = useState('');
-  const [car, setCar] = useState('');
-  const [price, setPrice] = useState('');
-  const [year, setYear] = useState('');
+  const [mileage, setMileage] = useState<number>(0);
+  const [brand, setBrand] = useState('');
+  const [model, setModel] = useState('');
+  const [price, setPrice] = useState<number>(0);
+  const [year, setYear] = useState<number>(0);
   const [phone, setPhone] = useState('');
-  const [seller, setSeller] = useState('');
+  const [owner, setOwner] = useState('');
   const [imageFiles, setImageFiles] = useState([]);
 
   const clickHandler = async (e: any) => {
-      const listing = new Listing(2002, 5000, 'BMW', 'A6');
+      const listing = new Listing(year, mileage, brand, model, price, owner, phone);
+      // const listing = new Listing(2002, 500000, 'BMW', 'A6', 9999, 'Saulius Mangrūda', '37069814723');
       await SampleClient.addCar(listing);
   } 
 
@@ -53,21 +54,28 @@ const AddListing = () => {
   return (
     <>
       <Box sx={{marginTop:10, marginLeft: '40vw'}} >
-          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}} placeholder='Image URL' value={img} autoComplete='off' onChange={e => setImg(e.target.value)}/> <br/>
-          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Car' value={car} autoComplete='off' onChange={e => setCar(e.target.value)}/> <br/>
-          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Price' value={price} autoComplete='off' onChange={e => setPrice(e.target.value)}/><br/>
-          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Year' value={year} autoComplete='off' onChange={e => setYear(e.target.value)}/> <br/>
+          {/* <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}} placeholder='Image URL' value={img} autoComplete='off' onChange={e => setImg(e.target.value)}/> <br/> */}
+
+          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Year' value={year} autoComplete='off' onChange={e => setYear(parseInt(e.target.value, 10))}/>year <br/>
+          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Mileage' value={mileage} autoComplete='off' onChange={e => setMileage(parseInt(e.target.value, 10))}/>mileage <br/>
+          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Brand' value={brand} autoComplete='off' onChange={e => setBrand(e.target.value)}/><br/>
+          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Model' value={model} autoComplete='off' onChange={e => setModel(e.target.value)}/> <br/>
+          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Price' value={price} autoComplete='off' onChange={e => setPrice(parseInt(e.target.value, 10))}/>price<br/>
+          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Owner' value={owner} autoComplete='off' onChange={e => setOwner(e.target.value)}/> <br/>
           <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Phone' value={phone} autoComplete='off' onChange={e => setPhone(e.target.value)}/><br/>
-          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Seller' value={seller} autoComplete='off' onChange={e => setSeller(e.target.value)}/> <br/>
-          
-          <FileUpload
-            label='Nuotraukos'
-            onChange={handleFileChange}
-          />
-          <SelectThumbnail
-            imageFiles={imageFiles}
-            handleThumbnailSelection={handleThumbnailSelection} 
-          />
+
+          <Box sx={{width: 500}}>
+            <FileUpload
+              label='Nuotraukos'
+              onChange={handleFileChange}
+            />
+            <SelectThumbnail
+              imageFiles={imageFiles}
+              handleThumbnailSelection={handleThumbnailSelection} 
+              
+            />
+          </Box>
+
           
           <NavLink to='/' style={{textDecoration: 'none', paddingLeft:45}}>
             <Button variant="contained" onClick={clickHandler}>Add listing</Button>

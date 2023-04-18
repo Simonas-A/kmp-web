@@ -17,6 +17,7 @@ export default class SampleClient {
             method: "GET"
         });
         const text = await response.text();
+        // console.log(JSON.parse(text));
         return JSON.parse(text);
     }
 
@@ -26,11 +27,15 @@ export default class SampleClient {
             method: "POST"
         });
         const text = await response.text();
+        
         return JSON.parse(text);
     }
 
     public static async addCar(listing: Listing): Promise<void> {
-        const url = "https://localhost:7207/Car/AddCar?year=" + listing.year + "&mileage=" + listing.mileage + "&brand=" + listing.brand + "&model=" + listing.model;
+        const url = "https://localhost:7207/Car/AddCar?year=" + listing.year + "&mileage="
+         + listing.mileage + "&brand=" + listing.brand + "&model=" + listing.model
+         + "&price=" + listing.price + "&owner=" + listing.owner + "&phone=" + listing.phoneNumber;
+         console.log(url);
         const response = await fetch(url, {
             method: "POST",
             // body: JSON.stringify(listing)

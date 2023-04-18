@@ -15,7 +15,8 @@ let listings: Listing[];
 
 async function getCars (setList: any){
   listings = await SampleClient.getCarListings();
-  setList(listings);
+  console.log(listings);
+  setList(listings); 
 }
 
 function CarList() {
@@ -24,7 +25,7 @@ function CarList() {
   const [list, setList] = useState([]); 
   
   getCars(setList);
-  //setList(listings);
+
 
   const clickHandler = () => {
     alert('nothing happened');
