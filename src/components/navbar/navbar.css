@@ -8,3 +8,16 @@
 .nav-link:hover{
     color:white;
 }
+.pointer{
+    cursor: pointer;
+}
+.bi.bi-box-arrow-right{
+    color: white;
+    margin-left: 15px;
+    
+}
+.vl{
+        height: 20px;
+        border-left: 1px solid white;
+        margin-left: 10px;
+}
