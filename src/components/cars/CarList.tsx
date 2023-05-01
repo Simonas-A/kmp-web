@@ -9,19 +9,13 @@ import {createRoot} from 'react-dom/client';
 import '../../index.css';
 import Car from './Car';
 import Listing from '../models/listing';
-
-//setup vars
-//let listings: Listing[];
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 
 async function getCars (setList: any){
-  //if (initialLoad.current) {
     const listings = await SampleClient.getCarListings();
     console.log("listings received");
     setList(listings);
-  //}
-  //else {
-  //  console.log("listings already received");
-  //}
 }
 
 const CarList = () => {
@@ -35,24 +29,23 @@ const CarList = () => {
   //getCars(setList, initialLoad.current);
 
 
-  const clickHandler = () => {
-    alert('nothing happened');
+  const clickHandler = async (listing: Listing) => {
+    await SampleClient.editCar(listing);
+  }
+  const deleteHandler = async (listing: Listing) => {
+    await SampleClient.deleteCar(listing);
   }
 
   const listings = list.map((car, index) => {
     return (
-    <div>
-      <Car key={index} car={car} index={index}></Car>
-      {/* <button type="button" onClick={()=>removeList(car.id)}>Delete</button> */}
-      <button type="button" onClick={clickHandler}>Edit</button>
-    </div>
+      <Box sx={{border: 1, borderColor: '#fffff'}}>
+        <Car key={index} car={car} index={index}></Car>
+        <Box sx={{width: 200, display: 'inline-block', padding: 1,}}>
+          <Button variant="contained" onClick={() => {clickHandler(car)}}>Edit</Button>
+          <Button variant="contained" sx={{marginLeft: 2}} onClick={() => {deleteHandler(car)}}>Delete</Button>
+        </Box>
+      </Box>
   )})
-
-
-  // function removeList (id : any) {
-  //   const newList = list.filter((l) => l.id !== id);
-  //   setList(newList);
-  // }
 
   return (
     <section className='carList'>
@@ -60,9 +53,5 @@ const CarList = () => {
     </section>
   );
 }
-
-// const domNode = document.getElementById('root')
-// const root = createRoot(domNode!);
-// root.render( <CarList />);
 
 export default CarList;

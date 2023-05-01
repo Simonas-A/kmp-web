@@ -12,7 +12,7 @@ const AddListing = () => {
   const [mileage, setMileage] = useState<number>(0);
   const [brand, setBrand] = useState('');
   const [model, setModel] = useState('');
-  const [price, setPrice] = useState<number>(0);
+  const [price, setPrice] = useState(0);
   const [year, setYear] = useState<number>(0);
   const [phone, setPhone] = useState('');
   const [owner, setOwner] = useState('');
@@ -20,7 +20,6 @@ const AddListing = () => {
 
   const clickHandler = async (e: any) => {
       const listing = new Listing(year, mileage, brand, model, price, owner, phone);
-      // const listing = new Listing(2002, 500000, 'BMW', 'A6', 9999, 'Saulius Mangrūda', '37069814723');
       await SampleClient.addCar(listing);
   } 
 
@@ -55,16 +54,22 @@ const AddListing = () => {
     <>
       <Box sx={{marginTop:10, marginLeft: '40vw'}} >
           {/* <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}} placeholder='Image URL' value={img} autoComplete='off' onChange={e => setImg(e.target.value)}/> <br/> */}
+          Year: <br/>
+          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Year' value={year} autoComplete='off' onChange={e => setYear(parseInt(e.target.value, 10))}/>
+          <br/> Mileage: <br/>
+          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Mileage' value={mileage} autoComplete='off' onChange={e => setMileage(parseInt(e.target.value, 10))}/>
+          <br/> Brand: <br/>
+          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Brand' value={brand} autoComplete='off' onChange={e => setBrand(e.target.value)}/>
+          <br/> Model: <br/>
+          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Model' value={model} autoComplete='off' onChange={e => setModel(e.target.value)}/>
+          <br/> Price: <br/>
+          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Price' value={price} autoComplete='off' onChange={e => setPrice(parseInt(e.target.value, 10))}/>
+          <br/> Owner: <br/>
+          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Owner' value={owner} autoComplete='off' onChange={e => setOwner(e.target.value)}/>
+          <br/> Phone: <br/>
+          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Phone' value={phone} autoComplete='off' onChange={e => setPhone(e.target.value)}/>
 
-          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Year' value={year} autoComplete='off' onChange={e => setYear(parseInt(e.target.value, 10))}/>year <br/>
-          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Mileage' value={mileage} autoComplete='off' onChange={e => setMileage(parseInt(e.target.value, 10))}/>mileage <br/>
-          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Brand' value={brand} autoComplete='off' onChange={e => setBrand(e.target.value)}/><br/>
-          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Model' value={model} autoComplete='off' onChange={e => setModel(e.target.value)}/> <br/>
-          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Price' value={price} autoComplete='off' onChange={e => setPrice(parseInt(e.target.value, 10))}/>price<br/>
-          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Owner' value={owner} autoComplete='off' onChange={e => setOwner(e.target.value)}/> <br/>
-          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Phone' value={phone} autoComplete='off' onChange={e => setPhone(e.target.value)}/><br/>
-
-          <Box sx={{width: 500}}>
+          <Box sx={{width: 400,}}>
             <FileUpload
               label='Nuotraukos'
               onChange={handleFileChange}
@@ -72,12 +77,11 @@ const AddListing = () => {
             <SelectThumbnail
               imageFiles={imageFiles}
               handleThumbnailSelection={handleThumbnailSelection} 
-              
             />
           </Box>
-
           
           <NavLink to='/' style={{textDecoration: 'none', paddingLeft:45}}>
+            <br/>
             <Button variant="contained" onClick={clickHandler}>Add listing</Button>
           </NavLink>
       </Box>

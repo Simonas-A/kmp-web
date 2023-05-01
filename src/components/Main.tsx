@@ -21,17 +21,15 @@ function a11yProps(index: number) {
 
 
 const Main = () => {
-    const [value, setValue] = React.useState(0);
-    // const [addedListing, setAddedListing] = useState([]);
-    
+    const [value, setValue] = React.useState(0);    
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
-  const navigate = useNavigate();
+
   return (
     <>
-        <Box sx={{ width: '100%' }}>
+        <Box sx={{ width: '100%'}}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={window.location.pathname} onChange={handleChange} aria-label="basic tabs example">
                     <Tab label="Home" value={ROUTES.HOME} to={ROUTES.HOME} component={Link} {...a11yProps(0)} />
@@ -41,8 +39,7 @@ const Main = () => {
 
             <Routes>
                 <Route index path={ROUTES.HOME} element={
-                    <TabPanel value={value} index={0}>
-                        {/* <h1>{addedListing}</h1> */}
+                    <TabPanel value={value} index={0} sx={{backgroundColor: 'red'}}>
                         <CarList />
                     </TabPanel>
                 } />
