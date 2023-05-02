@@ -38,23 +38,17 @@ export default class SampleClient {
         return JSON.parse(text);
     }
 
-    public static async deleteCar(listing : Listing): Promise<Listing[]> {
-        // const xhr = new XMLHttpRequest();
+    public static async deleteCar(listing : Listing): Promise<void> {
+        const xhr = new XMLHttpRequest();
         // no cors
-        // xhr.withCredentials = false;
+        xhr.withCredentials = false;
 
-        const url = "https://localhost:7207/Car/DeleteCar?year=" + listing.year + "&mileage="
-        + listing.mileage + "&brand=" + listing.brand + "&model=" + listing.model
-        + "&price=" + listing.price + "&owner=" + listing.owner + "&phone=" + listing.phoneNumber;
-
-        // xhr.open("DELETE", url, true);
+        const url = "https://localhost:7207/Car/DeleteCar/"+ listing.id;
 
         const response = await fetch(url, {
             method: "DELETE"
         });
-        const text = await response.text();
-        
-        return JSON.parse(text);
+
     }
 
     public static async addCar(listing: Listing): Promise<void> {

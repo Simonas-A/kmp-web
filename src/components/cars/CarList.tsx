@@ -34,6 +34,7 @@ const CarList = () => {
   }
   const deleteHandler = async (listing: Listing) => {
     await SampleClient.deleteCar(listing);
+    getCars(setList);
   }
 
   const listings = list.map((car, index) => {

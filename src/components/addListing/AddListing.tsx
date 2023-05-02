@@ -19,7 +19,7 @@ const AddListing = () => {
   const [imageFiles, setImageFiles] = useState([]);
 
   const clickHandler = async (e: any) => {
-      const listing = new Listing(year, mileage, brand, model, price, owner, phone);
+      const listing = new Listing(year, mileage, brand, model, price, owner, phone, "");
       await SampleClient.addCar(listing);
   } 
 

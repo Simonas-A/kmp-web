@@ -1,5 +1,5 @@
 export default class Listing{
-    constructor(_year: number, _mileage: number, _brand: string, _model: string, _price: number, _owner: string, _phoneNumber: string){
+    constructor(_year: number, _mileage: number, _brand: string, _model: string, _price: number, _owner: string, _phoneNumber: string, _id: string){
         this.year = _year;
         this.mileage = _mileage;
         this.brand = _brand;
@@ -7,6 +7,7 @@ export default class Listing{
         this.price = _price;
         this.owner = _owner;
         this.phoneNumber = _phoneNumber;
+        this.id = _id;
     }
 
     public year: number;
@@ -16,6 +17,7 @@ export default class Listing{
     public price: number;
     public owner: string;
     public phoneNumber: string;
+    public id: string;
 }
 
 export class Car{
