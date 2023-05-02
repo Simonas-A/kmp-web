@@ -1,10 +1,16 @@
 import React from 'react'
 
+const NewImage = (id: number) => {
+  const size = 300 + id;
+  console.log(id);
+  return <img src={'https://loremflickr.com/' + size + '/400/Car'} alt='' />
+}
+
 const Car = (props : any) => {
   const {brand, id, mileage, model, owner, phoneNumber, price, year} = props.car;
 
   return <article className='car'>
-    <img src={'https://loremflickr.com/640/480/Car'} alt='' />
+    {NewImage(props.index)}
     <h1>${price}</h1>
     <h4>Brand: {brand}</h4>
     <h4>Model: {model}</h4>
