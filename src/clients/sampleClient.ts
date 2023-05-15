@@ -1,4 +1,5 @@
 import Listing from "../components/models/listing";
+import axios from 'axios';
 
 export default class SampleClient {
 
@@ -10,6 +11,26 @@ export default class SampleClient {
     //     const text = await response.text();
     //     return text;
     // }
+    public static async getListingById(id: string): Promise<Listing | null> {
+        const url = `https://localhost:7207/Car/GetCar/${id}`;
+        const response = await fetch(url, {
+          method: 'GET'
+        });
+    
+        if (!response.ok) {
+          throw new Error('Failed to fetch car listing');
+        }
+    
+        const text = await response.text();
+        const listing = JSON.parse(text) as Listing;
+        
+        // Handle the case where the listing is not found
+        if (!listing) {
+          return null;
+        }
+    
+        return listing;
+      }
 
     public static async getCarListings(): Promise<Listing[]> {
         const url = "https://localhost:7207/Car/GetCars";
@@ -37,6 +58,20 @@ export default class SampleClient {
         
         return JSON.parse(text);
     }
+
+    static async editCarListing(listing : Listing) {
+        console.log("brendas:", listing.brand);
+        try {
+            
+          const url = `https://localhost:7207/Car/UpdateCar/${listing.id}`;
+          
+          const response = await axios.put(url, listing);
+          return response.data;
+        } catch (error) {
+          console.error('Error editing car listing:', error);
+          throw error;
+        }
+      }
 
     public static async deleteCar(id : String): Promise<void> {
         const xhr = new XMLHttpRequest();
