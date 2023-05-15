@@ -1,7 +1,10 @@
 import Listing from "../components/models/listing";
-import axios from 'axios';
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 export default class SampleClient {
+    
+    
 
     // public static async getDataAsync(): Promise<string> {
     //     const url = "https://localhost:7207/WeatherForecast";
@@ -11,26 +14,6 @@ export default class SampleClient {
     //     const text = await response.text();
     //     return text;
     // }
-    public static async getListingById(id: string): Promise<Listing | null> {
-        const url = `https://localhost:7207/Car/GetCar/${id}`;
-        const response = await fetch(url, {
-          method: 'GET'
-        });
-    
-        if (!response.ok) {
-          throw new Error('Failed to fetch car listing');
-        }
-    
-        const text = await response.text();
-        const listing = JSON.parse(text) as Listing;
-        
-        // Handle the case where the listing is not found
-        if (!listing) {
-          return null;
-        }
-    
-        return listing;
-      }
 
     public static async getCarListings(): Promise<Listing[]> {
         const url = "https://localhost:7207/Car/GetCars";
@@ -48,38 +31,22 @@ export default class SampleClient {
         // no cors
         xhr.withCredentials = false;
 
-        const url = "https://localhost:7207/Car/EditCar?year=" + listing.year + "&mileage="
-        + listing.mileage + "&brand=" + listing.brand + "&model=" + listing.model
-        + "&price=" + listing.price + "&owner=" + listing.owner + "&phone=" + listing.phoneNumber;
+        const url = "https://localhost:7207/Car/UpdateCar?id=" + listing.id + "&year=" + listing.year + "&mileage="
+        + listing.mileage + "&brand=" + listing.brand + "&model=" + listing.model + "&price=" + listing.price + "&owner=" + listing.owner + "&phone=" + listing.phoneNumber;
         const response = await fetch(url, {
-            method: "POST"
+            method: "PUT"
         });
         const text = await response.text();
         
         return JSON.parse(text);
     }
 
-    static async editCarListing(listing : Listing) {
-        console.log("brendas:", listing.brand);
-        try {
-            
-          const url = `https://localhost:7207/Car/UpdateCar/${listing.id}`;
-          
-          const response = await axios.put(url, listing);
-          return response.data;
-        } catch (error) {
-          console.error('Error editing car listing:', error);
-          throw error;
-        }
-      }
-
-    public static async deleteCar(id : String): Promise<void> {
+    public static async deleteCar(listing : Listing): Promise<void> {
         const xhr = new XMLHttpRequest();
         // no cors
         xhr.withCredentials = false;
-        console.log(id);
 
-        const url = "https://localhost:7207/Car/DeleteCar/"+ id;
+        const url = "https://localhost:7207/Car/DeleteCar/"+ listing.id;
 
         const response = await fetch(url, {
             method: "DELETE"
@@ -88,9 +55,10 @@ export default class SampleClient {
     }
 
     public static async addCar(listing: Listing): Promise<void> {
+        
         const url = "https://localhost:7207/Car/AddCar?year=" + listing.year + "&mileage="
          + listing.mileage + "&brand=" + listing.brand + "&model=" + listing.model
-         + "&price=" + listing.price + "&owner=" + listing.owner + "&phone=" + listing.phoneNumber;
+         + "&price=" + listing.price + "&owner=" + listing.owner + "&userId=" + listing.userId + "&phone=" + listing.phoneNumber;
         const response = await fetch(url, {
             method: "POST",
         });
