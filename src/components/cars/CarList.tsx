@@ -18,6 +18,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogActions from '@mui/material/DialogActions';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../routes/routes';
+import { useAuth0 } from "@auth0/auth0-react";
 
 async function getCars (setList: any){
     const listings = await SampleClient.getCarListings();
@@ -29,6 +30,7 @@ async function getCars (setList: any){
 const CarList = () => {
   const [list, setList] = useState<Listing[]>([]);
   const [open, setOpen] = React.useState(false);
+  const {user} = useAuth0();
   const [deleteId, setDeleteId] = React.useState("");
   //const initialLoad = useRef(true);
 
@@ -49,8 +51,13 @@ const CarList = () => {
     setOpen(false);
   }
   const handleOpen = (car: Listing) => {
-    setDeleteId(car.id);
-    setOpen(true);
+    if (car.userId == user?.sub) {
+      setDeleteId(car.id);
+      setOpen(true);
+  } else {
+    alert("Negali trinti svetimų skelbimų");
+    setOpen(false);
+  }
   };
 
   const handleClose = () => {
@@ -67,15 +74,23 @@ const CarList = () => {
   
 
   const listings = list.map((car, index) => {
+  const canEdit = car.userId === user?.sub;
+
+    
     return (
       <Box sx={{border: 1, borderColor: '#fffff', backgroundColor: 'white' }}>
         <Car key={index} car={car} index={index}></Car>
         <Box sx={{width: 200, display: 'inline-block', padding: 1,}}>
           <Box sx={{marginLeft: 2, display: 'inline-flex'}}>
+          {canEdit && (
             <Link to={`${ROUTES.EDIT_LISTING}/${car.id}`} className="nav-link">
-              <Button variant="contained" >Edit</Button>
+              <Button variant="contained">Edit</Button>
             </Link>
+          )}
+          {canEdit && (
             <Button variant="contained" sx={{marginLeft: 2, display: 'inline-flex'}} onClick={() => (handleOpen(car))}>Delete</Button>
+
+          )}
           </Box>
 
           <Dialog

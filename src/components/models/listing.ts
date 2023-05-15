@@ -1,11 +1,12 @@
 export default class Listing{
-    constructor(_year: number, _mileage: number, _brand: string, _model: string, _price: number, _owner: string, _phoneNumber: string, _id: string, images: string[]){
+    constructor(_year: number, _mileage: number, _brand: string, _model: string, _price: number, _owner: string,_userId: string, _phoneNumber: string, _id: string, images: string[]){
         this.year = _year;
         this.mileage = _mileage;
         this.brand = _brand;
         this.model = _model;
         this.price = _price;
         this.owner = _owner;
+        this.userId = _userId
         this.phoneNumber = _phoneNumber;
         this.id = _id;
         this.images = images;
@@ -17,6 +18,7 @@ export default class Listing{
     public model: string;
     public price: number;
     public owner: string;
+    public userId: string;
     public phoneNumber: string;
     public id: string;
     public images: string[];
