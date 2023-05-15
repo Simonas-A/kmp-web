@@ -17,7 +17,7 @@ const App = () => {
         <Route path={ROUTES.HOME} element = {<HomePage />}></Route>
         <Route path={ROUTES.ADD_LISTING} element = {< CarUpload/>}></Route>
         <Route path={ROUTES.CAR_LIST} element = {< CarListPage/>}></Route>
-        <Route path={ROUTES.EDIT_LISTING} element = {< EditListing/>}></Route>
+        <Route path={`${ROUTES.EDIT_LISTING}/:id`} element = {< EditListing/>}></Route>
       </Routes> 
     </> 
   )

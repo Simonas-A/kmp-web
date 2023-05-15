@@ -60,8 +60,11 @@ export default class SampleClient {
     }
 
     static async editCarListing(listing : Listing) {
+        console.log("brendas:", listing.brand);
         try {
+            
           const url = `https://localhost:7207/Car/UpdateCar/${listing.id}`;
+          
           const response = await axios.put(url, listing);
           return response.data;
         } catch (error) {
