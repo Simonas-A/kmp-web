@@ -39,7 +39,7 @@ const Main = () => {
 
             <Routes>
                 <Route index path={ROUTES.HOME} element={
-                    <TabPanel value={value} index={0} sx={{backgroundColor: 'red'}}>
+                    <TabPanel value={value} index={0}>
                         <CarList />
                     </TabPanel>
                 } />
