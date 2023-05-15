@@ -73,12 +73,13 @@ export default class SampleClient {
         }
       }
 
-    public static async deleteCar(listing : Listing): Promise<void> {
+    public static async deleteCar(id : String): Promise<void> {
         const xhr = new XMLHttpRequest();
         // no cors
         xhr.withCredentials = false;
+        console.log(id);
 
-        const url = "https://localhost:7207/Car/DeleteCar/"+ listing.id;
+        const url = "https://localhost:7207/Car/DeleteCar/"+ id;
 
         const response = await fetch(url, {
             method: "DELETE"
