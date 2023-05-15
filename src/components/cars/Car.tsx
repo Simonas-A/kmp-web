@@ -7,10 +7,17 @@ const NewImage = (id: number) => {
 }
 
 const Car = (props : any) => {
-  const {brand, id, mileage, model, owner, phoneNumber, price, year} = props.car;
+  const {brand, id, mileage, model, owner, phoneNumber, price, year, images} = props.car;
+
+  let image = null;
+  if (images === null || images === undefined || images.length === 0) {
+    image = NewImage(props.index);
+  } else {
+    image = <img src={images[0]} alt='' />
+  }
 
   return <article className='car'>
-    {NewImage(props.index)}
+    {image}
     <h1>${price}</h1>
     <h4>Brand: {brand}</h4>
     <h4>Model: {model}</h4>

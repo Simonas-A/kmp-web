@@ -61,6 +61,18 @@ export default class SampleClient {
         const text = await response.text();
     }
 
+    public static async addCarListing(listing: Listing): Promise<void> {
+        const url = "https://localhost:7207/Car/AddCar";
+        const response = await fetch(url, {
+            method: "POST",
+            body: JSON.stringify(listing),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        const text = await response.text();
+    }
+
     public static getData(): string {
         const url = "https://localhost:7207/WeatherForecast";
         const xhr = new XMLHttpRequest();

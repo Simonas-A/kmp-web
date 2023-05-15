@@ -19,8 +19,8 @@ const AddListing = () => {
   const [imageFiles, setImageFiles] = useState([]);
 
   const clickHandler = async (e: any) => {
-      const listing = new Listing(year, mileage, brand, model, price, owner, phone, "");
-      await SampleClient.addCar(listing);
+      const listing = new Listing(year, mileage, brand, model, price, owner, phone, "00000000-0000-0000-0000-000000000000", imageFiles);
+      await SampleClient.addCarListing(listing);
   } 
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
