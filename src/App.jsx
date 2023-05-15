@@ -11,12 +11,14 @@ import CarListPage from './pages/CarList/CarListPage';
 const App = () => {
   return (
     <>
-      <Navbar/>
-      <Routes>
-        <Route path={ROUTES.HOME} element = {<HomePage />}></Route>
-        <Route path={ROUTES.ADD_LISTING} element = {< CarUpload/>}></Route>
-        <Route path={ROUTES.CAR_LIST} element = {< CarListPage/>}></Route>
-      </Routes> 
+      {/* <div className='background'> */}
+        <Navbar/>
+        <Routes>
+          <Route path={ROUTES.HOME} element = {<HomePage />}></Route>
+          <Route path={ROUTES.ADD_LISTING} element = {< CarUpload/>}></Route>
+          <Route path={ROUTES.CAR_LIST} element = {< CarListPage/>}></Route>
+        </Routes> 
+      {/* </div> */}
     </> 
   )
 }

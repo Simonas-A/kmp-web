@@ -91,3 +91,18 @@ form * {
   align-items: center;
   justify-content: center;
 }
+
+html {
+  background-color: lavender;
+}
+main {
+  background-color: lavender;
+}
+body {
+  background-color: lavender;
+}
+
+/* .background {
+  height: 100vh;
+  background-color: lavender;
+} */

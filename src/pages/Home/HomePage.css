@@ -11,9 +11,16 @@
     background-color: rgba(0, 0, 0, 0.5);
   }
 .filter{
-    padding: 300px 0;
+    padding: 100px 500px;
+    text-align: center;
+}
+.images{
+    padding-bottom: 100px;
     text-align: center;
 }
 .background{
     background-color: rgba(0, 0, 0, 0.4);
+}
+.homepage-background{
+    background-color: lavender;
 }

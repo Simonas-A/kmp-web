@@ -52,7 +52,7 @@ const AddListing = () => {
 
   return (
     <>
-      <Box sx={{marginTop:10, marginLeft: '40vw'}} >
+      <Box sx={{paddingTop: 10, backgroundColor: 'lavender', paddingLeft: '42vw'}} >
           {/* <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}} placeholder='Image URL' value={img} autoComplete='off' onChange={e => setImg(e.target.value)}/> <br/> */}
           Year: <br/>
           <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Year' value={year} autoComplete='off' onChange={e => setYear(parseInt(e.target.value, 10))}/>
@@ -69,7 +69,7 @@ const AddListing = () => {
           <br/> Phone: <br/>
           <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Phone' value={phone} autoComplete='off' onChange={e => setPhone(e.target.value)}/>
 
-          <Box sx={{width: 400,}}>
+          <Box sx={{width: 400}}>
             <FileUpload
               label='Nuotraukos'
               onChange={handleFileChange}

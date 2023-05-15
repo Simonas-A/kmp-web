@@ -6,11 +6,15 @@ const CarUpload = () => {
     const { isAuthenticated } = useAuth0();
     return (
         <>
-            {isAuthenticated ? (
-                <AddListing />
-            ) : (
-                <h1><center>reikia prisijungti</center></h1>
-            )}
+            <div className='background-new-upload'>
+                {isAuthenticated ? (
+                    <AddListing />
+                ) : (
+                    <h1 style={{backgroundColor: "lavender", textAlign: "center", paddingTop: 300}}>
+                        Norint įdėti naują skelbimą, reikia prisijungti
+                    </h1>
+                )}
+            </div>
         </>
     );
 };
