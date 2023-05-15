@@ -70,7 +70,7 @@ const EditListing = () => {
 
   return (
     <>
-      <Box sx={{marginTop:10, marginLeft: '40vw'}} >
+      <Box sx={{paddingTop: 10, backgroundColor: 'lavender', paddingLeft: '42vw'}} >
           {/* <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}} placeholder='Image URL' value={img} autoComplete='off' onChange={e => setImg(e.target.value)}/> <br/> */}
           Year: <br/>
           <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Year' value={year} autoComplete='off' onChange={e => setYear(parseInt(e.target.value, 10))}/>
