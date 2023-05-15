@@ -7,19 +7,22 @@ import Main from '../Main';
 import Listing from '../models/listing';
 import FileUpload from '../imageUpload/FileUpload';
 import SelectThumbnail from '../imageUpload/SelectThumbnail';
+import { useAuth0 } from "@auth0/auth0-react";
 
 const AddListing = () => {
+  const {user, isAuthenticated} = useAuth0();
   const [mileage, setMileage] = useState<number>(0);
   const [brand, setBrand] = useState('');
   const [model, setModel] = useState('');
   const [price, setPrice] = useState(0);
   const [year, setYear] = useState<number>(0);
   const [phone, setPhone] = useState('');
-  const [owner, setOwner] = useState('');
+  const owner = user?.name ? user.name.toString() : '';
+  const userId = user?.sub ? user.sub.toString() : '';
   const [imageFiles, setImageFiles] = useState([]);
 
   const clickHandler = async (e: any) => {
-      const listing = new Listing(year, mileage, brand, model, price, owner, phone, "00000000-0000-0000-0000-000000000000", imageFiles);
+      const listing = new Listing(year, mileage, brand, model, price, owner, userId, phone, "00000000-0000-0000-0000-000000000000", imageFiles);
       await SampleClient.addCarListing(listing);
   } 
 
@@ -64,8 +67,6 @@ const AddListing = () => {
           <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Model' value={model} autoComplete='off' onChange={e => setModel(e.target.value)}/>
           <br/> Price: <br/>
           <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Price' value={price} autoComplete='off' onChange={e => setPrice(parseInt(e.target.value, 10))}/>
-          <br/> Owner: <br/>
-          <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Owner' value={owner} autoComplete='off' onChange={e => setOwner(e.target.value)}/>
           <br/> Phone: <br/>
           <TextField type='text' sx={{backgroundColor: 'white', marginBottom: 2}}  placeholder='Phone' value={phone} autoComplete='off' onChange={e => setPhone(e.target.value)}/>
 
