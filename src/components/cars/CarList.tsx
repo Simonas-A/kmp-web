@@ -11,12 +11,14 @@ import Car from './Car';
 import Listing from '../models/listing';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 
 async function getCars (setList: any){
     const listings = await SampleClient.getCarListings();
     console.log("listings received");
     setList(listings);
 }
+
 
 const CarList = () => {
   const [list, setList] = useState([]); 
@@ -29,9 +31,9 @@ const CarList = () => {
   //getCars(setList, initialLoad.current);
 
 
-  const clickHandler = async (listing: Listing) => {
-    await SampleClient.editCar(listing);
-  }
+ /* const clickHandler = async (listing: Listing) => {
+    await SampleClient.editCarListing(listing);
+  }*/
   const deleteHandler = async (listing: Listing) => {
     await SampleClient.deleteCar(listing);
     getCars(setList);
@@ -42,7 +44,9 @@ const CarList = () => {
       <Box sx={{border: 1, borderColor: '#fffff'}}>
         <Car key={index} car={car} index={index}></Car>
         <Box sx={{width: 200, display: 'inline-block', padding: 1,}}>
-          <Button variant="contained" onClick={() => {clickHandler(car)}}>Edit</Button>
+          <Link to="/edit-listing" className="nav-link">
+            <Button variant="contained">Edit</Button>
+          </Link>
           <Button variant="contained" sx={{marginLeft: 2}} onClick={() => {deleteHandler(car)}}>Delete</Button>
         </Box>
       </Box>

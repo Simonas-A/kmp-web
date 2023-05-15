@@ -7,6 +7,7 @@ import HomePage from './pages/Home/HomePage'
 import {ROUTES} from './components/routes/routes'
 import CarUpload from './pages/CarUpload/CarUpload'
 import CarListPage from './pages/CarList/CarListPage';
+import EditListing from './components/editListing/EditListing';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path={ROUTES.HOME} element = {<HomePage />}></Route>
         <Route path={ROUTES.ADD_LISTING} element = {< CarUpload/>}></Route>
         <Route path={ROUTES.CAR_LIST} element = {< CarListPage/>}></Route>
+        <Route path={ROUTES.EDIT_LISTING} element = {< EditListing/>}></Route>
       </Routes> 
     </> 
   )
